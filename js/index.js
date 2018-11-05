@@ -18,3 +18,40 @@ const bottomRight = document.querySelector('#bottomright');
 const strictButton = document.querySelector('#strict');
 const onButton = document.querySelector('#on');
 const startButton = document.querySelector('#start');
+
+strictButton.addEventListener('click', () => {
+  if (strictButton.checked == true) {
+    strict = true;
+  } else {
+    strict = false;
+  }
+});
+
+onButton.addEventListener('click', () => {
+  if (onButton.checked == true) {
+    on = true;
+    turnCounter.innerHTML = "--";
+  } else {
+    on = false;
+    turnCounter.innerHTML = "";
+    clearColor();
+    clearInterval(intervalId);
+  }
+});
+
+startButton.addEventListener('click', () => {
+  if (on || win) {
+    play();
+  }
+});
+
+function play() {
+  win = false;
+  order = [];
+  playerOrder = [];
+  flash = 0;
+  intervalId = 0;
+  turn = 1;
+  turnCounter.innerHTML = 1;
+  good = true;
+}
